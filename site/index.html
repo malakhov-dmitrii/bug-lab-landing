@@ -3,393 +3,120 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bug Lab — WOWCube</title>
-  <meta name="description" content="Chemical puzzle on a WOWCube. Twist a layer, pat to mix, blow up the cockroach. 20 labs, no touchscreen, no browser version.">
+  <meta name="description" content="Bug Lab: лаборатория у тебя в руках. Крути WOWCube, смешивай вещества и победи таракана. Головоломка для детей 10–12 лет.">
+  <meta name="theme-color" content="#fbf9f0">
+  <title>Bug Lab | WOWCube</title>
   <link rel="icon" href="assets/sprites/bug.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <a class="skip" href="#how">
-    <span class="ru">К механике</span>
-    <span class="en">Skip to the mechanic</span>
-  </a>
-
-  <div class="wrap">
-    <header>
-      <a class="brand" href="#">
-        <img src="assets/sprites/bug.png" alt="">
-        <span>BUG LAB</span>
-      </a>
-      <div class="lang" role="group" aria-label="Language">
+  <a class="skip-link" href="#main"><span class="ru">К игре</span><span class="en">Skip to the game</span></a>
+  <div class="page">
+    <header class="header">
+      <a class="wordmark" href="#main">BUG LAB</a>
+      <div class="languages" role="group" aria-label="Language">
         <button type="button" data-set-lang="ru" aria-pressed="true">RU</button>
+        <span aria-hidden="true">/</span>
         <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
       </div>
     </header>
 
-    <section class="hero">
-      <div>
-        <p class="kicker">PUZZLE ON A WOWCUBE</p>
-        <h1>BUG LAB</h1>
-        <p class="lead">
-          <span class="ru">Крутишь как Рубик. Хлопаешь — реакция. Таракан в шоке.</span>
-          <span class="en">Twist like a Rubik’s cube. Pat it — reaction. The cockroach panics.</span>
-        </p>
-        <ul class="stats">
-          <li>20 LABS</li>
-          <li>4 CHAPTERS</li>
-          <li>24 SCREENS</li>
-          <li>NO TOUCH</li>
-        </ul>
-        <p class="chip">
-          <span class="ru">Нужен живой куб · в браузере её нет</span>
-          <span class="en">Needs a real cube · no browser play</span>
-        </p>
-      </div>
-      <div class="stage">
-        <div class="scene" aria-hidden="true">
-          <div class="wowcube" data-cube></div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <section class="shout">
-    <div class="wrap">
-      <p>
-        <span class="ru">На кубе нет тача.</span>
-        <span class="en">The cube has no touchscreen.</span>
-        <span class="after">
-          <span class="ru">Ни одна бутылка не двигается пальцем. Двигается весь слой — и всё, что на нём стоит. Отсюда растёт вся игра.</span>
-          <span class="en">No bottle ever moves under your finger. A whole layer moves, and everything riding it. The entire game grows out of that.</span>
-        </span>
-      </p>
-    </div>
-  </section>
-
-  <div class="wrap">
-    <section class="section" id="how" data-mech data-phase="idle">
-      <p class="eyebrow">HOW IT PLAYS</p>
-      <div class="mech-rail">
-        <div class="mech-stage">
-          <div class="scene" aria-hidden="true">
-            <div class="wowcube" data-cube></div>
+    <main id="main">
+      <section class="hero" aria-labelledby="headline">
+        <div class="hero-copy">
+          <h1 id="headline"><span class="ru">Лаборатория<br>у тебя в руках.</span><span class="en">A lab<br>in your hands.</span></h1>
+          <p class="intro"><span class="ru">В лаборатории завёлся таракан.<br class="desktop-break"> Крути куб, смешивай вещества<br class="desktop-break"> и собери то, чем его победить.</span><span class="en">A cockroach has got into your lab. Twist the cube, mix ingredients and make what you need to beat it.</span></p>
+          <div class="hero-characters" aria-hidden="true">
+            <img class="hero-gas" src="assets/sprites/cl2.png" alt="" width="200" height="200">
+            <img class="hero-bug" src="assets/sprites/bug.png" alt="" width="240" height="240">
           </div>
-          <p class="hud px" data-hud></p>
         </div>
 
-        <ol class="mech-steps">
-          <li class="mech-step" data-phase="idle" data-hud="L1 SALT TRAP">
-            <span class="num">01 / LAB</span>
-            <h3>
-              <span class="ru">Реагенты лежат на гранях</span>
-              <span class="en">Reagents sit on the faces</span>
-            </h3>
-            <p>
-              <span class="ru">Двадцать четыре экрана, на каждом что-то стоит. Сами реагенты не сдвинутся и сами не смешаются — никогда.</span>
-              <span class="en">Twenty-four screens, each holding something. Reagents never move on their own, and never mix on their own.</span>
-            </p>
-          </li>
+        <div class="hero-video">
+          <div class="video-frame">
+            <video id="gameplay-video" controls playsinline preload="metadata" poster="assets/clips/play.jpg" aria-label="Игра на настоящем WOWCube">
+              <source src="assets/clips/play.mp4" type="video/mp4">
+              <span class="ru">Браузер не поддерживает видео.</span><span class="en">Your browser does not support video.</span>
+            </video>
+            <button type="button" id="watch-video" class="watch-video" aria-controls="gameplay-video" aria-label="Смотреть игру">
+              <span class="play-disc" aria-hidden="true"><img src="assets/icons/play-fill.svg" alt="" width="52" height="52"></span>
+              <span class="play-label"><img src="assets/icons/play-fill.svg" alt="" width="25" height="25" aria-hidden="true"><span class="ru">Смотреть игру</span><span class="en">Watch gameplay</span></span>
+            </button>
+          </div>
+          <p class="video-caption"><span class="ru">Фрагмент игры на настоящем кубе · 6 сек.</span><span class="en">A clip from a real cube · 6 sec.</span></p>
+          <p id="video-error" class="video-error" role="status" hidden><span class="ru">Не удалось запустить видео. </span><span class="en">The video could not start. </span><a id="video-fallback" href="assets/clips/play.mp4"><span class="ru">Открыть запись</span><span class="en">Open the recording</span></a></p>
+        </div>
+      </section>
 
-          <li class="mech-step" data-phase="twist" data-hud="TWIST">
-            <span class="num">02 / TWIST</span>
-            <h3>
-              <span class="ru">Поверни слой</span>
-              <span class="en">Twist a layer</span>
-            </h3>
-            <p>
-              <span class="ru">Единственный способ что-то передвинуть. Крутишь куб как Рубика — бутылки едут вместе со своими плитками.</span>
-              <span class="en">The only way to move anything. You twist the cube like a Rubik’s — bottles ride along with their tiles.</span>
-            </p>
+      <section class="how" aria-labelledby="how-title">
+        <h2 id="how-title" class="sr-only"><span class="ru">Как играть</span><span class="en">How to play</span></h2>
+        <ol class="steps">
+          <li class="step">
+            <span class="step-number" aria-hidden="true">1</span>
+            <div class="step-body">
+              <h2><span class="ru">Поверни</span><span class="en">Twist</span></h2>
+              <p><span class="ru">Бутылки едут вместе<br class="desktop-break"> с кубом.</span><span class="en">The bottles move with the cube.</span></p>
+              <img class="step-photo" src="assets/clips/play.jpg" alt="WOWCube" width="640" height="640" loading="lazy">
+            </div>
           </li>
-
-          <li class="mech-step" data-phase="glow" data-hud="PAIR READY">
-            <span class="num">03 / PAIR</span>
-            <h3>
-              <span class="ru">Загорелось жёлтым</span>
-              <span class="en">It lights up yellow</span>
-            </h3>
-            <p>
-              <span class="ru">Два реагента встали на общую сторону — рамка жёлтая. Наискосок на одной грани не считается: нужна именно общая сторона.</span>
-              <span class="en">Two reagents share a side — the frame turns yellow. Diagonal on the same face doesn’t count: they need a shared edge.</span>
-            </p>
+          <li class="step">
+            <span class="step-number" aria-hidden="true">2</span>
+            <div class="step-body">
+              <h2><span class="ru">Соедини</span><span class="en">Bring together</span></h2>
+              <p><span class="ru">Подходящая пара подсветится.</span><span class="en">A matching pair will glow.</span></p>
+              <div class="step-sprites pair" aria-hidden="true"><img src="assets/sprites/h.png" alt="" width="160" height="160" loading="lazy"><img src="assets/sprites/cl.png" alt="" width="160" height="160" loading="lazy"></div>
+            </div>
           </li>
-
-          <li class="mech-step" data-phase="pat" data-hud="PAT!">
-            <span class="num">04 / PAT</span>
-            <h3>
-              <span class="ru">Хлопни по кубу</span>
-              <span class="en">Pat the cube</span>
-            </h3>
-            <p>
-              <span class="ru">Один хлопок — смешать. В игре жест так и зовётся: PAT. Три хлопка подряд — вернуться на карту.</span>
-              <span class="en">One pat mixes. The game calls the gesture exactly that: PAT. Three pats in a row take you back to the map.</span>
-            </p>
-          </li>
-
-          <li class="mech-step" data-phase="win" data-hud="CL2 + BUG = WIN">
-            <span class="num">05 / WIN</span>
-            <h3>
-              <span class="ru">Таракан не выжил</span>
-              <span class="en">The cockroach does not survive</span>
-            </h3>
-            <p>
-              <span class="ru">Нужный продукт оказался рядом с тараканом — лаборатория пройдена. Обычно это хлор, но не всегда.</span>
-              <span class="en">The right product ends up next to the cockroach — lab done. Usually chlorine, but not always.</span>
-            </p>
+          <li class="step">
+            <span class="step-number" aria-hidden="true">3</span>
+            <div class="step-body">
+              <h2><span class="ru">Стукни</span><span class="en">Pat</span></h2>
+              <p><span class="ru">Смешай. Затем примени нужный продукт к таракану ещё одним стуком.</span><span class="en">Mix. Then use the required product on the cockroach with another pat.</span></p>
+              <div class="step-sprites finish" aria-hidden="true"><img src="assets/sprites/cl2.png" alt="" width="160" height="160" loading="lazy"><img src="assets/sprites/bug.png" alt="" width="160" height="160" loading="lazy"></div>
+            </div>
           </li>
         </ol>
-      </div>
-    </section>
+      </section>
 
-    <section class="section">
-      <p class="eyebrow">RECIPES</p>
-      <h2>
-        <span class="ru">Химия здесь — игрушка</span>
-        <span class="en">Chemistry here is a toy</span>
-      </h2>
-      <p class="sub">
-        <span class="ru">Рецепты короткие и наглые. Куб сам показывает нужную формулу перед стартом лаборатории — учебник не понадобится.</span>
-        <span class="en">The recipes are short and cheeky. The cube shows you the formula before the lab starts — no textbook required.</span>
-      </p>
-      <div class="recipes-rail">
-        <figure class="clip">
-          <video src="assets/clips/recipes.mp4" poster="assets/clips/recipes.jpg" autoplay loop muted playsinline></video>
-          <figcaption>
-            <span class="ru">Экран рецептов на живом кубе.</span>
-            <span class="en">The recipe screen on a real cube.</span>
-          </figcaption>
-        </figure>
-        <div class="recipes">
-          <div class="recipe">
-            <p class="formula">H + CL<br>=<br><b>HCL</b></p>
-            <p>
-              <span class="ru">Базовая склейка. С неё начинается почти всё.</span>
-              <span class="en">The basic join. Almost everything starts here.</span>
-            </p>
-          </div>
-          <div class="recipe">
-            <p class="formula">HCL + HCL<br>=<br><b>CL2!</b></p>
-            <p>
-              <span class="ru">Два одинаковых тоже реагируют. Хлор — главное оружие.</span>
-              <span class="en">Two of a kind react too. Chlorine is the main weapon.</span>
-            </p>
-          </div>
-          <div class="recipe">
-            <p class="formula">CL2 + BUG<br>=<br><b class="win">WIN</b></p>
-            <p>
-              <span class="ru">Цель лаборатории. Поставить рядом — и всё.</span>
-              <span class="en">The lab goal. Put it next to him, done.</span>
-            </p>
-          </div>
-          <div class="recipe">
-            <p class="formula">ER + T<br>=<br><b class="boom">BOOM</b></p>
-            <p>
-              <span class="ru">Четвёртая глава. Здесь взрывают, а не травят.</span>
-              <span class="en">Chapter four. Here you blow him up instead.</span>
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <p class="eyebrow">THE MAP</p>
-      <h2>
-        <span class="ru">20 лабораторий, четыре главы</span>
-        <span class="en">20 labs, four chapters</span>
-      </h2>
-      <p class="sub">
-        <span class="ru">Карта — сам куб: каждая грань это глава, каждый экран — уровень. Пройденное открывает следующее, остальное висит на замке.</span>
-        <span class="en">The map is the cube itself: a face per chapter, a screen per level. Clearing one opens the next, the rest stay locked.</span>
-      </p>
-      <div class="chapters">
-        <div class="chapter">
-          <div class="chapter-head">
-            <img src="assets/sprites/nacl.png" alt="">
-            <span>CH.1 SALTS</span>
-          </div>
-          <div class="level open"><span class="id">L1</span><span class="name">SALT TRAP</span><span class="state">OPEN</span></div>
-          <div class="level"><span class="id">L2</span><span class="name">SALT SLIDE</span><span class="state">LOCK</span></div>
-          <div class="level locked"><span class="id">L3</span><span class="name">— — —</span><span class="state">LOCK</span></div>
-          <div class="level"><span class="id">L4</span><span class="name">DOUBLE FIZZ</span><span class="state">LOCK</span></div>
-          <div class="level locked"><span class="id">L5</span><span class="name">— — —</span><span class="state">LOCK</span></div>
-        </div>
-        <div class="chapter">
-          <div class="chapter-head">
-            <img src="assets/sprites/fire.png" alt="">
-            <span>CH.2 FIRE</span>
-          </div>
-          <div class="level locked"><span class="id">L6</span><span class="name">— — —</span><span class="state">LOCK</span></div>
-          <div class="level"><span class="id">L7</span><span class="name">SPARK GAP</span><span class="state">LOCK</span></div>
-          <div class="level locked"><span class="id">L8</span><span class="name">— — —</span><span class="state">LOCK</span></div>
-          <div class="level"><span class="id">L9</span><span class="name">EXTINGUISHER</span><span class="state">LOCK</span></div>
-          <div class="level locked"><span class="id">L10</span><span class="name">— — —</span><span class="state">LOCK</span></div>
-        </div>
-        <div class="chapter">
-          <div class="chapter-head">
-            <img src="assets/sprites/fe.png" alt="">
-            <span>CH.3 METAL</span>
-          </div>
-          <div class="level locked"><span class="id">L11</span><span class="name">— — —</span><span class="state">LOCK</span></div>
-          <div class="level locked"><span class="id">L12</span><span class="name">— — —</span><span class="state">LOCK</span></div>
-          <div class="level locked"><span class="id">L13</span><span class="name">— — —</span><span class="state">LOCK</span></div>
-          <div class="level locked"><span class="id">L14</span><span class="name">— — —</span><span class="state">LOCK</span></div>
-          <div class="level locked"><span class="id">L15</span><span class="name">— — —</span><span class="state">LOCK</span></div>
-        </div>
-        <div class="chapter">
-          <div class="chapter-head">
-            <img src="assets/sprites/burst.png" alt="">
-            <span>CH.4 BOOM</span>
-          </div>
-          <div class="level"><span class="id">L16</span><span class="name">FIRST EXPLOSION</span><span class="state">LOCK</span></div>
-          <div class="level"><span class="id">L17</span><span class="name">CORNER FUSE</span><span class="state">LOCK</span></div>
-          <div class="level"><span class="id">L18</span><span class="name">WHICH SPARK?</span><span class="state">LOCK</span></div>
-          <div class="level"><span class="id">L19</span><span class="name">DON’T SNUFF IT</span><span class="state">LOCK</span></div>
-          <div class="level locked"><span class="id">L20</span><span class="name">— — —</span><span class="state">LOCK</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <p class="eyebrow">ON A REAL CUBE</p>
-      <h2>
-        <span class="ru">Как это выглядит в руках</span>
-        <span class="en">What it looks like in hand</span>
-      </h2>
-      <div class="clips">
-        <figure class="clip">
-          <video src="assets/clips/play.mp4" poster="assets/clips/play.jpg" autoplay loop muted playsinline></video>
-          <figcaption>
-            <span class="ru">Лаборатория: реагенты на плитках, слой крутится в пальцах.</span>
-            <span class="en">Inside a lab: reagents on tiles, the layer twisting between fingers.</span>
-          </figcaption>
-        </figure>
-        <figure class="clip">
-          <video src="assets/clips/goal.mp4" poster="assets/clips/goal.jpg" autoplay loop muted playsinline></video>
-          <figcaption>
-            <span class="ru">Брифинг перед стартом: рецепт, цель и номер лаборатории.</span>
-            <span class="en">The briefing before a start: recipe, goal and lab number.</span>
-          </figcaption>
-        </figure>
-        <figure class="clip">
-          <video src="assets/clips/map.mp4" poster="assets/clips/map.jpg" autoplay loop muted playsinline></video>
-          <figcaption>
-            <span class="ru">Карта на гранях: жёлтая рамка — выбранный уровень.</span>
-            <span class="en">The map across the faces: a yellow frame marks the pick.</span>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="section">
-      <p class="eyebrow">THE DEVICE</p>
-      <h2>
-        <span class="ru">Что такое WOWCube</span>
-        <span class="en">What a WOWCube is</span>
-      </h2>
-      <p class="sub">
-        <span class="ru">Игровая консоль в форме головоломки 2×2. Её крутят, наклоняют и хлопают по ней — и всё это игра читает.</span>
-        <span class="en">A game console shaped like a 2×2 puzzle. You twist it, tilt it and pat it — the game reads all of that.</span>
-      </p>
-      <div class="device">
-        <div>
-          <b>8</b>
-          <p>
-            <span class="ru">кубиков, каждый крутится независимо в двух плоскостях.</span>
-            <span class="en">cubies, each twisting independently in two planes.</span>
-          </p>
-        </div>
-        <div>
-          <b>24</b>
-          <p>
-            <span class="ru">отдельных экрана — по три на каждом кубике.</span>
-            <span class="en">separate screens — three per cubie.</span>
-          </p>
-        </div>
-        <div>
-          <b>0</b>
-          <p>
-            <span class="ru">кнопок и сенсорных панелей. Управление — только движение.</span>
-            <span class="en">buttons or touch panels. Motion is the whole input.</span>
-          </p>
-        </div>
-        <div>
-          <b>360°</b>
-          <p>
-            <span class="ru">гироскоп: куб знает, какой стороной к вам повёрнут.</span>
-            <span class="en">gyroscope: the cube knows which side faces you.</span>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="need">
-      <div class="need">
-        <div>
-          <p class="eyebrow">GET IT RUNNING</p>
-          <h2>
-            <span class="ru">Как поиграть</span>
-            <span class="en">How to play</span>
-          </h2>
-          <p class="sub" style="margin-bottom:0">
-            <span class="ru">Телефон нужен только чтобы поставить игру. Играть на телефоне нельзя.</span>
-            <span class="en">The phone only installs the game. You cannot play on the phone.</span>
-          </p>
-          <ol>
-            <li>
-              <span class="ru">WOWCube в руках, на телефоне —</span>
-              <span class="en">WOWCube in hand, phone running</span>
-              <a href="https://apps.apple.com/us/app/wowcube-connect/id1579680201">WOWCube Connect</a>.
-            </li>
-            <li>
-              <span class="ru">Ссылку на домашнюю сборку пришлём мы. Пометка unverified — так и должно быть: это не магазин Cubios.</span>
-              <span class="en">We send the home-build link. Unverified is expected: this is not the Cubios store.</span>
-            </li>
-            <li>
-              <span class="ru">Спарь куб по Bluetooth, поставь <strong>Bug Lab</strong>. Два хлопка по кубу — старт. Три встряхивания — выход в меню куба.</span>
-              <span class="en">Pair over Bluetooth, install <strong>Bug Lab</strong>. Two pats launch it. Three shakes leave to the cube menu.</span>
-            </li>
+      <details id="full-recipe" class="recipe">
+        <summary><img src="assets/icons/chevron-down.svg" alt="" width="20" height="20" aria-hidden="true"><span class="ru">Рецепт первого уровня</span><span class="en">First lab recipe</span></summary>
+        <div class="recipe-content">
+          <div class="recipe-heading"><h2>Salt trap</h2><p><span class="ru">Цель: получить Cl2 и применить его к таракану.</span><span class="en">Goal: make Cl2 and use it on the cockroach.</span></p></div>
+          <ol class="recipe-steps">
+            <li><strong>H + Cl → HCl</strong><span class="ru">Совмести первую пару и стукни.</span><span class="en">Bring the first pair together and pat.</span></li>
+            <li><strong>H + Cl → HCl</strong><span class="ru">Повтори с оставшимися H и Cl.</span><span class="en">Repeat with the remaining H and Cl.</span></li>
+            <li><strong>HCl + HCl → Cl2</strong><span class="ru">Соедини две HCl и стукни.</span><span class="en">Bring both HCl bottles together and pat.</span></li>
+            <li><strong><span class="ru">Cl2 + таракан + стук</span><span class="en">Cl2 + cockroach + pat</span></strong><span class="ru">Поставь газ рядом с тараканом и стукни ещё раз.</span><span class="en">Put the gas beside the cockroach and pat once more.</span></li>
           </ol>
+          <p class="recipe-note"><span class="ru">Пары должны иметь общую сторону на одной грани. По диагонали и через ребро куба смешать нельзя. Если готовых пар несколько, стук обработает одну подсвеченную пару. Три стука подряд во время игры перезапускают уровень.</span><span class="en">Pairs must share a side on the same face. Diagonals and positions across a cube edge do not count. If several pairs are ready, a pat processes the highlighted pair. Three pats in a row during play restart the lab.</span></p>
+          <p class="recipe-note"><span class="ru">Это игровой рецепт. В других лабораториях понадобятся другие продукты.</span><span class="en">This is a game recipe. Other labs require different products.</span></p>
         </div>
-        <p class="note">
-          <span class="ru">В списке игр ищите <strong>Bug Lab</strong>. Mad Chemist — старое рабочее имя, его быть не должно.</span>
-          <span class="en">Look for <strong>Bug Lab</strong> in the list. Mad Chemist is the old working title — it should not appear.</span>
-        </p>
-      </div>
-    </section>
+      </details>
 
-    <footer>
-      <span class="px">GALEVOX · BUG LAB · 0.2 PLAYTEST</span>
-      <span>
-        <span class="ru">Не учебник. Химия — игрушка.</span>
-        <span class="en">Not a textbook. Chemistry is the toy.</span>
-      </span>
-    </footer>
+      <section class="install-section" aria-labelledby="install-title">
+        <details id="install" class="install">
+          <summary>
+            <span class="install-title" id="install-title"><span class="download-disc" aria-hidden="true"><img src="assets/icons/download.svg" alt="" width="30" height="30"></span><span class="ru">Как установить</span><span class="en">How to install</span></span>
+            <span class="install-description"><span class="ru">Нужны WOWCube и приложение WOWCube Connect. Ссылку на игру пришлёт разработчик.</span><span class="en">You need a WOWCube and the WOWCube Connect app. The developer will send the game link.</span></span>
+            <span class="game-facts"><span class="ru">10–12 лет · 20 лабораторий</span><span class="en">Ages 10–12 · 20 labs</span></span>
+          </summary>
+          <div class="install-content">
+            <ol>
+              <li><span class="ru">Установи </span><span class="en">Install </span><a href="https://apps.apple.com/us/app/wowcube-connect/id1579680201">WOWCube Connect</a><span class="ru"> на телефон и подключи куб по Bluetooth.</span><span class="en"> on your phone and connect the cube over Bluetooth.</span></li>
+              <li><span class="ru">Получи у разработчика ссылку на сборку и открой её на телефоне. У сборки для тестирования может быть пометка unverified.</span><span class="en">Get the build link from the developer and open it on your phone. The playtest build may be marked unverified.</span></li>
+              <li><span class="ru">Установи Bug Lab на куб. Выбери иконку игры в меню куба и стукни два раза, чтобы запустить.</span><span class="en">Install Bug Lab on the cube. Select its icon in the cube menu and pat twice to launch.</span></li>
+              <li><span class="ru">На карте выбери наклоном L1 / Salt trap и стукни один раз.</span><span class="en">Tilt to select L1 / Salt trap on the map, then pat once.</span></li>
+            </ol>
+            <p><span class="ru">После победы один стук открывает следующую лабораторию, три возвращают на карту. Три встряхивания выводят из игры в меню куба. Телефон нужен для установки, сама игра работает на WOWCube.</span><span class="en">After a win, one pat opens the next lab and three return to the map. Three shakes leave the game for the cube menu. The phone installs the game; you play on WOWCube.</span></p>
+          </div>
+        </details>
+      </section>
+    </main>
+
   </div>
-
-  <script src="cube.js"></script>
-  <script>
-    (function () {
-      var root = document.documentElement;
-      var saved = localStorage.getItem("buglab-lang");
-      var queried = new URLSearchParams(location.search).get("lang");
-      function apply(lang) {
-        if (lang !== "en" && lang !== "ru") lang = "ru";
-        root.lang = lang;
-        root.setAttribute("data-lang", lang);
-        localStorage.setItem("buglab-lang", lang);
-        document.querySelectorAll("[data-set-lang]").forEach(function (btn) {
-          btn.setAttribute("aria-pressed", btn.getAttribute("data-set-lang") === lang ? "true" : "false");
-        });
-      }
-      apply(queried || saved || "ru");
-      document.querySelectorAll("[data-set-lang]").forEach(function (btn) {
-        btn.addEventListener("click", function () { apply(btn.getAttribute("data-set-lang")); });
-      });
-    })();
-  </script>
+  <script src="site.js" defer></script>
 </body>
 </html>
