@@ -11,7 +11,7 @@
     const labels = { ru: "Смотреть игру", en: "Watch gameplay" };
 
     function normalizeLanguage(value) {
-      return value === "en" ? "en" : "ru";
+      return value === "ru" ? "ru" : "en";
     }
 
     function initialLanguage() {
@@ -21,7 +21,7 @@
       try {
         return normalizeLanguage(window.localStorage.getItem("buglab-lang"));
       } catch {
-        return "ru";
+        return "en";
       }
     }
 
